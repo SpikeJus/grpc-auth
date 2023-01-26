@@ -1,3 +1,7 @@
 go.sum
 .vscode
 *.exe
+Makefile
+.env
+*.env
+*.pb.go

@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package main;
+
+option go_package = ".";
+
+service AuthApi {
+  rpc GetPublicKey(KeyRequest) returns(KeyResponse);
+  rpc Login(AuthRequest) returns(AuthResponse);
+}
+
+message KeyRequest {
+}
+
+message KeyResponse {
+  message PublicKey {
+    string N = 1;
+    int64 E = 2;
+  }
+  PublicKey publicKey = 1;
+}
+
+message AuthRequest {
+  bytes encLogin = 1;
+  bytes encPassword = 2;
+}
+
+message AuthResponse {
+  string uid = 1;
+  string accessToken = 3;
+}
+
